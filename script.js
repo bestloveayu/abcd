@@ -192,16 +192,12 @@ async function predictCocktail() {
         return;
     }
 
-try {
-    webcam = new tmImage.Webcam(400, 400, true);
-    await webcam.setup();
-    await webcam.play();
-    webcamContainer.appendChild(webcam.canvas);
-    document.getElementById("teachable-result").innerText = "攝影機已啟動，正在辨識...";
-} catch (error) {
-    console.error("攝影機錯誤:", error);
-    document.getElementById("teachable-result").innerText = `無法開啟攝影機：${error.message}。請確認攝影機權限並使用 HTTPS。`;
-}
+    try {
+        webcam = new tmImage.Webcam(400, 400, true);
+        await webcam.setup();
+        await webcam.play();
+        webcamContainer.appendChild(webcam.canvas);
+        document.getElementById("teachable-result").innerText = "攝影機已啟動，正在辨識...";
 
         const confirmButton = document.createElement('button');
         confirmButton.className = 'teachable-button';
@@ -254,8 +250,8 @@ try {
         };
         requestAnimationFrame(loop);
     } catch (error) {
-        console.error("攝影機錯誤詳情:", error);
-        document.getElementById("teachable-result").innerText = `無法開啟攝影機：${error.message}。請確認攝影機權限並使用本地伺服器運行。`;
+        console.error("攝影機錯誤:", error);
+        document.getElementById("teachable-result").innerText = `無法開啟攝影機：${error.message}。請確認攝影機權限並使用 HTTPS。`;
     }
 }
 
